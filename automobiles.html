@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoMobile Elite</title>
+ <link rel="icon" href="c:\Users\harsh\OneDrive\ドキュメント\html\cvrh.png.png" type="image/png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+      cursor: url('https://cur.cursors-4u.net/mechanics/mec-1/mec59.cur'), auto;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(90deg, #1a1a1a, #2c2c2c);
+      color: white;
+      padding: 1.5rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+      padding: 5px 0;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #ff4d4d;
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    nav ul li a:hover {
+      color: #ff4d4d;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    #menu-toggle:checked ~ nav {
+      display: block;
+    }
+
+    /* HERO SECTION with background slideshow */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 80px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: slideshow 15s infinite;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    @keyframes slideshow {
+      0% {
+        background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      }
+      33% {
+        background-image: url('https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      }
+      66% {
+        background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      }
+      100% {
+        background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+      }
+    }
+
+    .hero-content {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 3rem;
+      border-radius: 15px;
+      animation: fadeIn 1.5s ease-in-out;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: #ff4d4d;
+      color: white;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+      background: #e63939;
+      transform: scale(1.05);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .models {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 20px;
+    }
+
+    .models h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 2.5rem;
+      color: #1a1a1a;
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .model-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .model-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .model-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .model-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .model-card h3 {
+      font-size: 1.8rem;
+      margin: 1.5rem 0;
+      color: #1a1a1a;
+    }
+
+    .model-card p {
+      padding: 0 1.5rem 1.5rem;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .testimonials {
+      background: #1a1a1a;
+      color: white;
+      padding: 4rem 20px;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      font-style: italic;
+      transition: background 0.3s;
+    }
+
+    .testimonial-card:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .testimonial-card p {
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card span {
+      font-weight: bold;
+      color: #ff4d4d;
+    }
+
+    .contact {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+      width: 100%;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #ff4d4d;
+      box-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .contact-form button {
+      background: #ff4d4d;
+      color: white;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #e63939;
+    }
+
+    footer {
+      background: linear-gradient(90deg, #1a1a1a, #2c2c2c);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    footer p {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .header-container {
+        flex-wrap: wrap;
+      }
+
+      .logo {
+        flex-grow: 1;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      nav {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        background: #2b2d42;
+        padding-top: 1rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 10px 0;
+      }
+
+      .model-card img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">AutoMobile Elite</div>
+      <label for="menu-toggle" class="menu-icon">&#9776;</label>
+      <input type="checkbox" id="menu-toggle" />
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#models">Models</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Unleash Your Drive</h1>
+      <p>Discover luxury, performance, and innovation in every ride.</p>
+      <a href="#models" class="btn">Explore Models</a>
+    </div>
+  </section>
+
+  <section class="models" id="models">
+    <h2>Our Premium Models</h2>
+    <div class="model-grid">
+      <div class="model-card">
+        <a href="https://www.ferrari.com/en-IN " target="_blank"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports Car" /></a>
+        <h3>Sports Elite</h3>
+        <p>Feel the rush with unmatched speed and precision engineering.</p>
+      </div>
+      <div class="model-card">
+        <a href="https://www.landrover.in/index.html "target="_blank"><img src=data:image/jpeg;base64,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 alt="Luxury SUV" /></a>
+        <h3>Luxury SUV</h3>
+        <p>Conquer any terrain with style and supreme comfort.</p>
+      </div>
+      <div class="model-card">
+        <a href="https://www.rolls-roycemotorcars.com/en_GB/showroom/phantom.html"target ="_blank"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Electric Pro" /></a>
+        <h3>Pro Electric cars</h3>
+        <p>Drive the future with eco-friendly power and cutting-edge tech.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>"The Sports Elite is a game-changer! Unbelievable performance and style."</p>
+        <span>- ravi</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"The Luxury SUV made our family trips so comfortable and exciting."</p>
+        <span>- chaithanya</span>
+      </div>
+      <div class="testimonial-card">
+        <p>"Going electric with the Pro was the best decision. Sustainable and powerful!"</p>
+        <span>- vasim</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Get in Touch</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AutoMobile Elite. All rights reserved.</p>
+  </footer>
+</body>
+</html>
